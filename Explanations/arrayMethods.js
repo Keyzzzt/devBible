@@ -1,7 +1,8 @@
 
 console.log(`This file covers following array build-in methods: 
-
-forEach, flat, indexOf, push, findIndex, Array.isArray, Array.from find, pop, unshift, shift, join, includes, filter, fill, sort, map, reduce, some, every, reverse, concat, slice, splice`)
+forEach, flat, indexOf, push, findIndex, Array.isArray, 
+Array.from find, pop, unshift, shift, join, includes,, filter, 
+fill, sort, map, reduce, some, every, reverse, concat, slice, splice`)
 
 
 // push - добавляет в конец и возвращет длину нового массива. Параметры передаются через запятую.
