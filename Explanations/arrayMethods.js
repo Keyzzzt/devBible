@@ -24,7 +24,7 @@ const ages = [23, 12, 54, 75, 34, 23, 55, 77, 44, 42]
 const names = ['max', 'mox', 'mux']
 
 //forEach
-// this method do not return anything by itself, but loops through the array and change it if needed
+// this method do not return anything by itself, but loops through the array
 // it takes syncronous callback function
 // this function can take 3 arguments, item, index and array itself:
 // persons.forEach((elem, i, arr) => console.log(elem, i, arr))
@@ -136,6 +136,7 @@ const names = ['max', 'mox', 'mux']
 
 
 // splice
+// Изменяет исходный массив
 // Убирает или заменяет элемент массива
 // Возвращает новый массив с удаленными элементами
 // принимает три аргумента, 1-начальный индекс, 2-колличество элементов после него, 3- опционально, элементы которым заменяем

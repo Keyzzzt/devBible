@@ -11,7 +11,7 @@ const reverseArray = arr => [...arr].sort((x, y) => y - x)
 // Numbers Factorial
 const fact = number => {
     if(number < 0){
-        throw new TypeError('Negative number is not alowed')
+        throw new TypeError('Negative number is not allowed')
     } else if (number <= 1) {
         return 1
     } else {
