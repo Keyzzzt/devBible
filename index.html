@@ -5,17 +5,130 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./styles.css">
-    <title>Document</title>
+    <title>Prepearing for the interview</title>
+    <base id='htmldom'>
 </head>
 <style>
     body {
         padding: 50px;
         font-size: 24px;
     }
+    form{
+        width: 200px;
+        background-color: tomato;
+        border-radius: 10px;
+        padding: 20px;
+        margin: 50px auto;
+        display: flex;
+        flex-direction: column;
+    }
+    input {
+        cursor: pointer;
+        margin: 5px;
+        padding: 5px;
+        border: none;
+        border-radius: 5px;
+        background-color:white;
+        color: #000;
+    }
+    .resultContainer{
+        background-color: yellow;
+        padding: 20px;
+        min-width: 100px;
+        min-height: 100px;
+        position: fixed;
+        top: 0;
+        left: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .result {
+        background-color: tomato;
+        border-radius: 10px;
+        padding: 20px;
+
+    }
+    .logic {
+        background-color: tomato;
+        border-radius: 10px;
+        padding: 20px;
+    }
+
 </style>
 
+
+
 <body style="background-color: antiquewhite;">
-    <a name="ok" href=""><span>ok</span></a>
+
+    <div class='resultContainer'><span class="result"></span></div>
+
+    <!-- Form -->
+    <form action="#" class='secondForm' id='submitMe' method="POST">
+        <h4>Form</h4>
+        <input type="text" name="" id="" placeholder="Type some text">
+        <input type="text" name="" id="" placeholder="Type some text">
+        <input type="submit" id='submit' onclick="submitMyForm()" value="Submit"/>
+        <input type="button" onclick="resetMyForm()" value="Reset"/>
+        <input type="button" value="Get form all values" onclick="getAllValues()">
+        <input type="button" onclick="showFormIdFunction()" value="Show form id">
+    </form>
+
+    <!-- select -->
+    <form action="#">
+        <h4>Option</h4>
+        <select name="vehicles" id="cars">
+            <option value="Toyota">Toyota</option>
+            <option value="Lexus">Lexus</option>
+            <option value="Mercedes-Benz">Mercedes-Benz</option>
+            <option value="Opel">Opel</option>
+        </select>
+
+        <input type="button" onclick="disableSelect()" value="Disable">
+        <input type="button" value="Enable" onclick="enableSelect()">
+        <input type="button" value="Get id" onclick="getSelectId()">
+        <input type="button" value="Total options" onclick="getTotalOptions()">
+        <input type="button" value="Multiple select" onclick="selectMultiple()">
+        <input type="button" value="Selected value" onclick="getSelectedValue()">
+        <input type="button" value="All values" onclick="getAllValues()">
+        <input type="button" value="Index of selected" onclick="indexOfSelected()">
+        <input type="button" value="Change selected" onclick="changeSelected()">
+        <input type="button" value="Remove selected" onclick="removeSelected()">
+    </form>
+
+    <form action="#" class='secondForm' id='submitMe' method="POST">
+        <h4>Anchor object</h4>
+        <a 
+            id="anchor" 
+            hreflang="en-us" 
+            target="_self"
+            rel="unfollow"
+            name="ok" 
+            href="https://www.youtube.com/"
+        >
+            YouTube
+        </a>
+
+        <input type="button" value="Get href attribute" onclick="getHref()">
+        <input type="button" value="Get hreflang attribute" onclick="getHrefLang()">
+        <input type="button" value="Get rel attribute" onclick="getRel()">
+        <input type="button" value="Get target attribute" onclick="getTarget()">
+        <input type="button" value="Get hostname" onclick="getHostname()">
+        <input type="button" value="Get pathname" onclick="getPathname()">
+        <input type="button" value="Get base URL" onclick="getHTMLdom()">
+
+    </form>
+
+    <div class="logic">
+        <h4>Мюсли</h4>
+        <p>Для того чтобы по клику отображать картинку с более высоким расширением, по клику 
+            меняем атрибут src и даем ссылку на другое изображение.
+        </p>
+    </div>
+
+
+
+
     <a name="ii" href="">fgfg</a>
 
 
@@ -23,6 +136,7 @@
     <br>
     <br>
     <span>Click span!</span>
+    <button id='disableMeId' onclick="disableMe()">Disaable me!</button>
 
 
     <!-- eventListeners.js -->
@@ -60,10 +174,15 @@
         <span>This is the day when I started to learn regular expressions</span>
     </div>
 
+    <!-- DOM_Methods.js -->
+    <div>
+        <span class='dom-methods' name='dom'>This is the day when I started to learn regular expressions</span>
+    </div>
 
 
     <script src="./Snippets/"></script>
-    <script src="./Explanations/regex.js"></script>
+    <script src="./Explanations/listOfDOM_methods.js"></script>
+
 </body>
 
 </html>
