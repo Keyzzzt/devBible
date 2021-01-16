@@ -13,6 +13,19 @@
         padding: 50px;
         font-size: 24px;
     }
+    input {
+        outline: none;
+    }
+    .dom-api{
+        width: 250px;
+        background-color: tomato;
+        border-radius: 10px;
+        padding: 20px;
+        margin: 150px auto;
+        display: flex;
+        flex-direction: column;
+    }
+
     form{
         width: 200px;
         background-color: tomato;
@@ -63,14 +76,47 @@
 
     <div class='resultContainer'><span class="result"></span></div>
 
+
+
+    <div class="dom-api">
+        <input type="button" value='Number of images in document' onclick="numberOfImages()">
+        <input type="button" value='Domain name' onclick="domainName()">
+        <input type="button" value='Last modified' onclick="lastModifiedd()">
+        <input type="button" value='Document title' onclick="docTitle()">
+        <input type="button" value='URL' onclick="showURL()">
+        <input type="button" value='Number of a tags' onclick="aTags()">
+        <input type="button" value='Type of links collection' onclick="aTagsType()">
+        <input type="button" value='First link in the document' onclick="firstATag()">
+        <input type="button" value='Href attribute of the first link' onclick="hrefFirstLink()">
+        <input type="button" value='Cookies' onclick="getCookies()">
+        <input type="button" value='Text content of first link' onclick="textContentFirstLink()">
+        <input type="button" value='Number of links' onclick="totalLinksNumber()">
+        <input type="button" value='Number of forms' onclick="totalFormsNumber()">
+        <input type="button" value='First form name tag value' onclick="firstFormNameTagValue()">
+        <input type="button" value='console.log form elements' onclick="formElements()">
+        <input type="button" value='Number of form elements' onclick="formElementsNumber()">
+        <input type="button" value='enctype' onclick="enctype()">
+        <input type="button" value='Change last form style' onclick="changeLastFormStyle()">
+        <input type="button" value='Disable me' onclick="disableMe()">
+        
+
+
+    </div>
+
+
+
+
+
+    <input type="text" placeholder="Type some text">
+
     <!-- Form -->
-    <form action="#" class='secondForm' id='submitMe' method="POST">
+    <form action="#" name='myForm' class='myForm' method="POST">
         <h4>Form</h4>
         <input type="text" name="" id="" placeholder="Type some text">
         <input type="text" name="" id="" placeholder="Type some text">
         <input type="submit" id='submit' onclick="submitMyForm()" value="Submit"/>
         <input type="button" onclick="resetMyForm()" value="Reset"/>
-        <input type="button" value="Get form all values" onclick="getAllValues()">
+        <input type="button" value="LOg out all form values" onclick="getAllValues()">
         <input type="button" onclick="showFormIdFunction()" value="Show form id">
     </form>
 
@@ -84,19 +130,19 @@
             <option value="Opel">Opel</option>
         </select>
 
-        <input type="button" onclick="disableSelect()" value="Disable">
+        <input type="button"  value="Disable" onclick="disableSelect()">
         <input type="button" value="Enable" onclick="enableSelect()">
         <input type="button" value="Get id" onclick="getSelectId()">
         <input type="button" value="Total options" onclick="getTotalOptions()">
         <input type="button" value="Multiple select" onclick="selectMultiple()">
         <input type="button" value="Selected value" onclick="getSelectedValue()">
-        <input type="button" value="All values" onclick="getAllValues()">
+        <input type="button" value="All values" onclick="getAllOptionValues()">
         <input type="button" value="Index of selected" onclick="indexOfSelected()">
         <input type="button" value="Change selected" onclick="changeSelected()">
         <input type="button" value="Remove selected" onclick="removeSelected()">
     </form>
 
-    <form action="#" class='secondForm' id='submitMe' method="POST">
+    <form action="#" class='secondForm' method="POST">
         <h4>Anchor object</h4>
         <a 
             id="anchor" 
@@ -119,10 +165,31 @@
 
     </form>
 
+<img src="./img/dog.jpeg" alt="">
+
+
     <div class="logic">
         <h4>Мюсли</h4>
         <p>Для того чтобы по клику отображать картинку с более высоким расширением, по клику 
             меняем атрибут src и даем ссылку на другое изображение.
+        </p>
+        <p>
+            Повторение кода плохо так же тем что когда нам необходимо изменить код, менять его надо в нескольких местах.
+        </p>
+        <p>
+            В стандарте ES6 нету возможности инкапсуляции, в старом стандарте сокрыть чтолибо можно было 
+            через создание функции внутри класса, которая через замыкание имеет доступ к методам и свойствам класса.
+            
+            В ES6 обычно свойство или метод которое должно быть приватным объявляют через нижнее подчеркивание.
+            
+            Реализовать инкапсуляцию в ES6 можно через модули. Мы экспортируем класс из модуля, в котором описываем все что должнобыть публичным, но в этом же
+            модуле мы можем описать другие функции и свойства которые не будут экспортированы и таким образом какбы инкапсулированы - скрыты.
+
+            Проблема тут может возникнуть в поддержке браузеров модулей ES6
+        </p>
+        <p>
+            Новый стандарт ES6 выправил ситуацию с ООП в JS. Проще реализовывать наследование и полиморфизм,
+            Но нормальной инкапсуляции как не было так и нет.
         </p>
     </div>
 

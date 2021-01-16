@@ -1,67 +1,82 @@
 // Get the form that we will work with
-const myForm = document.querySelector('#submitMe')
+const myForm = document.querySelector('.myForm')
 const mySelect = document.querySelector('#cars')
 const result = document.querySelector('.result')
 const anchor = document.querySelector('#anchor')
 
+function numberOfImages(){
+    result.textContent = document.images.length
+}
+function domainName(){
+    result.textContent = document.domain
+}
+function lastModifiedd(){
+    result.textContent = document.lastModified
+}
+function docTitle(){
+    result.textContent = document.title   
+}
+function showURL(){
+    result.textContent = document.URL   
+}
+function aTags(){
+    result.textContent = document.links.length // old version anchors.length
+}
+function aTagsType(){
+    result.textContent = typeof document.links
+}
+function firstATag(){
+    result.textContent = document.links[0]
+}
+function getCookies(){
+    result.textContent = document.cookie
+}
+function hrefFirstLink(){
+    result.textContent = document.links[0].href
+}
+function textContentFirstLink(){
+    result.textContent = document.links[0].textContent // or .innerHTML
+}
+function totalLinksNumber(){
+    result.textContent = document.links.length
+}
+function totalFormsNumber(){
+    result.textContent = document.forms.length
+}
+function firstFormNameTagValue(){
+    result.textContent = document.forms[0].name
+}
+function formElements(){
+    result.textContent = console.log(document.forms.elements)
+}
+function enctype(){
+    result.textContent = `The enctype attribute specifies how the form-data should be encoded when submitting it to a server, ${myForm.enctype}`
+}
+function formElementsNumber(){
+    result.textContent = myForm.elements.length // or myForm.length
+}
+function changeLastFormStyle(){
+    let allForms = document.querySelectorAll('form')
+    allForms[allForms.length - 1].style.backgroundColor = 'Yellow'
+}
 
-
-console.log('Cookies: ', document.cookie)    // All name/value pairs of cookies in a document
-console.log('Domain name: ', document.domain)    // Domain name of the server that loaded the document
-console.log('Last modified: ', document.lastModified);    // The date and time the document was last modified
-console.log('Title: ', document.title);
-console.log('Document full URL: ', document.URL);
-console.log('Number of anchors: ', document.anchors.length);
-console.log('Href attribute of the first anchor in the document: ', document.anchors[0].href);
-console.log('Inner HTML of the first anchor in the document: ', document.anchors[0].innerHTML);
-console.log('Number of links in the document: ', document.links.length);
-console.log('Number of forms in the document: ', document.forms.length);
-console.log('Name of the first form in the document: ', document.forms[0].name);
-console.log('Number of images in the document: ', document.images.length);
-console.log('When we get a form object, then it has elements array with all form elements: ', myForm.elements);
-console.log('Get form action: ', myForm.action);
-console.log('Select id: ', mySelect.id);
-console.log('Number of images ', document.images.length);
-
-//The enctype attribute specifies how the form-data should be encoded when submitting it to a server.
-console.log('Get a form enctype: ',myForm.enctype);
-console.log('Number of form elements, form.length: ', myForm.length);
-console.log('Number of form elements, form.elements.length: ', myForm.elements.length);
-console.log('Form mrthod: ', myForm.method);
-
-
-// Change CSS style of the last form in the document
-let changeVisibility = document.querySelectorAll('form')
-changeVisibility[changeVisibility.length - 1].style.visibility = 'visible'
-
-// DisableMe Button
 function disableMe(){
-    document.getElementById('disableMeId').disabled = true
+    this.disabled = true
 }
 
 
-/**
- * ! Form
- */
-// Show form id
-function showFormIdFunction(){
-    result.textContent = myForm.id
-}
 // Reset a form 
 function resetMyForm(){
-    const form = document.querySelector('#submitMe')
-    result.textContent = form.elements
-    form.reset()
+    myForm.reset()
 }
 
 // Get all form elements values
 function getAllValues(){
-    const form2 = document.querySelector('#submitMe')
     const formElArr = []
-    for(let i = 0; i < form2.elements.length; i ++){
-        formElArr.push(form2.elements[i].value)
+    for(let i = 0; i < myForm.length; i ++){
+        formElArr.push(myForm.elements[i].value)
     }
-    result.textContent = formElArr
+    console.log(formElArr)
 }
 
 /**
@@ -85,7 +100,7 @@ function selectMultiple(){
 function getSelectedValue(){
     result.textContent = mySelect.options[mySelect.selectedIndex].text
 }
-function getAllValues(){
+function getAllOptionValues(){
     let text = ''
     for(let i = 0; i < mySelect.length; i ++){
         text = text + ' ' + mySelect[i].text
