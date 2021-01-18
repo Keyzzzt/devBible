@@ -10,12 +10,17 @@
         padding: 20px;
         border-radius: 5px;
         display: inline-block;
-        width: 500px;
         margin: 30px 100px;
         background-color: coral;
     }
-    span{
+    .span-heading{
         font-weight: 700;
+        margin-bottom: 25px;
+        display: inline-block;
+        font-size: 16px;
+    }
+    .comment{
+        color: green;
     }
 </style>
 <body>
@@ -32,53 +37,94 @@
         то ищет в прототипе, и только если не находит там - выдает ошибку.
     </p>
 
-    <code>
-        Под капотом: 
-        myObject.prototype = smartObject
-        <br>
-        Синтаксический сахар ES6:
-        myObject extends smartObject
-    </code>
     <pre>
-        function Animal(name, age, weight){
-            this.name = name
-            this.age = age
-            this.weight = weight
-            this.getVoice = function(){
-                console.log(this.name, this.age, this.weight)
-            }
-            this.eat = function(){
-                this.weight++
-            }
-        }
-        let a1 = new Animal(...)
-        let a2 = new Animal(...)
+<span class="span-heading">Синтаксис ES5</span>
+window.onload = function (e) {
+    let cat = new Cat('kote', 15)   // смотри троку 33
+    let dog = new Dog('bobik', 20)  // смотри троку 38
+
+    cat.getVoice()
+    dog.eat()
+    dog.getVoice()
+}
+
+<span class="comment">// Описываем юазовый класс Animal</span>
+
+function Animal(name, weight) {
+    this.name = name
+    this.weight = weight
+}
+<span class="comment">// В прототип этого базового класса записываем методы</span>
+Animal.prototype.getVoice = function () {
+    console.log(this.name + ' ' + this.weight)
+}
+Animal.prototype.eat = function () {
+    this.weight++
+}
+<span class="comment">// Тоже самое только в вимде объекта</span>
+ Animal.prototype = {
+     eat: function () {
+     this.weight++
+ },
+     getVoice: function () {
+         console.log(this.name + ' ' + this.weight)
+     }
+ }
+
+Cat.prototype = new Animal() <span class="comment">// Прототипом Cat является объект класс/объект Animal</span>
+
+function Cat(name, weight) {
+    Animal.call(this, name, weight) <span class="comment">// при вызове new Cat наследуемся от класса Animal, по сути копипастим код из Animal</span>
+    this.lifes = 9  // Дополнительное свойство Cat
+    this.getVoice = function () {      Animal.call(this, name, weight) <span class="comment">// Полиморфизм в ES5</span>
+        console.log(this.name + ' ' + this.weight + ' ' + this.lifes)
+    }
+}
+
+Dog.prototype = new Animal()
+function Dog(name, weight) {
+    Animal.call(this, name, weight) <span class="comment">// при вызове new Dog наследуемся от класса Animal, по сути копипастим код из Animal</span>
+}
     </pre>
-    <p>
-        В примере выше, у каждого instance объекта Animal будут повторятся все его св-ва и методы.
-        Но, так как св-ва меняются а методы нет, то логично было бы вынести методы в "прородителя", в прототип.
-        см. ниже
-    </p>
-    <pre>
-        function Human(name, age, weight){
-            this.name = name
-            this.age = age
-            this.weight = weight
-        
-        }
-        Human.prototype.getVoice = function(){
-            console.log(this.name, this.age, this.weight)
-        }
-        Human.prototype.eat = function(){
-            this.weight++
-        }
-        
-        let Igor = new Human('Igor', 33, 90)
-    </pre>
-    <p>
-        Теперь каждый instance объекта Human будет иметь только св-ва характерные именно для этого
-        человека, а методы убраны в прототип. Теперь мы не дублируем методы каждый раз.
-    </p>
+
+<pre>
+    <span class="span-heading">Синтаксис ES6</span>
+    class Human {
+    constructor(name, age, weight) {
+        this.name = name
+        this.age = age
+        this.weight = weight
+    }
+    <span class="comment">// Методы, описанные в синтаксисе класса ES6 автоматически записываются в прототип класса</span>
+    eat() {
+        this.weight++
+    }
+
+    getVoice() {
+        return this.name + ' ' + this.age + ' ' + this.weight
+    }
+}
+
+class White extends Human{
+    constructor(name, age, weight) {
+        super(name, age, weight) <span class="comment">//  Метод super необходим если мы хотим добавить к унаследованным свойствам другое свойство, по сути тоже самое что и в строке 37 или 44</span>
+        this.skinColor = 'white' <span class="comment">// Добавляем дополнительное свойство</span>
+    }
+    getVoice() {
+        return super.getVoice() + ' ' + this.skinColor <span class="comment">// Полиморфизм в ES6</span>
+    }
+}
+
+class Black extends Human {
+
+}
+
+let john = new White('John', 20, '100kg')
+let mark = new Black('Mark', 33, '70kg')
+console.log(john.getVoice())
+console.log(mark.getVoice())
+
+</pre>
 
 
 
